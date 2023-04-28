@@ -6,7 +6,15 @@ export const getPosts = async (req, res) => {
     res.send(posts)
 };
 
-export const createPost = (req, res) => res.send("New post created");
+export const createPost = (req, res) => {
+     const {title, description, user_name} = req.body;
+     
+    const post = new Post({title, description, user_name})
+
+    console.log(post);
+    post.save()
+    return res.send("received")
+};
 
 export const updatePost = (req, res) => res.send("Updating post");
 
