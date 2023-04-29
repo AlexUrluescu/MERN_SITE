@@ -1,41 +1,71 @@
 import Post from "../models/Post.js"
 
 export const getPosts = async (req, res) => {
+    try {    
+        const posts = await Post.find()
+        res.send(posts)
+        
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message: error.message})
+    }
 
-    const posts = await Post.find()
-    res.send(posts)
 };
 
 export const createPost = async (req, res) => {
-     const {title, description, user_name} = req.body;
+    try {
+        const {title, description, user_name} = req.body;
      
-    const newPost = new Post({title, description, user_name})
+        const newPost = new Post({title, description, user_name})
+    
+        console.log(newPost);
+        await newPost.save()
+        return res.json(newPost)
 
-    console.log(newPost);
-    await newPost.save()
-    return res.json(newPost)
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+        
+    }
 };
 
 export const updatePost = async (req, res) => {
 
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    console.log(post);
-    return res.send("Received")
+    try {
+        const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        console.log(updatedPost);
+        return res.json(updatedPost);
+
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+        
+    }
 };   
 
 export const deletePost = async (req, res) => {
-    const postRemoved = await Post.findByIdAndDelete(req.params.id);
+    try {
+        const postRemoved = await Post.findByIdAndDelete(req.params.id);
 
-    if(!postRemoved) return res.sendStatus(404)
+        if(!postRemoved) return res.sendStatus(404)
+    
+        return res.sendStatus(204)
 
-    return res.sendStatus(204)
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+        
+    }
 };
 
 export const getPost = async (req, res) => {
-    const post = await Post.findById(req.params.id);
+    try {
+        const post = await Post.findById(req.params.id);
 
-    if(!post) return res.sendStatus(404);
+        if(!post) return res.sendStatus(404);
+    
+        return res.json(post);
+        
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+        
+    }
 
-    return res.json(post);
-      
 };
