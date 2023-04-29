@@ -6,18 +6,36 @@ export const getPosts = async (req, res) => {
     res.send(posts)
 };
 
-export const createPost = (req, res) => {
+export const createPost = async (req, res) => {
      const {title, description, user_name} = req.body;
      
-    const post = new Post({title, description, user_name})
+    const newPost = new Post({title, description, user_name})
 
-    console.log(post);
-    post.save()
-    return res.send("received")
+    console.log(newPost);
+    await newPost.save()
+    return res.json(newPost)
 };
 
-export const updatePost = (req, res) => res.send("Updating post");
+export const updatePost = async (req, res) => {
 
-export const deletePost = (req, res) => res.send("Deleting post");
+    const post = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    console.log(post);
+    return res.send("Received")
+};   
 
-export const getPost = (req, res) => res.send("Getting a post");
+export const deletePost = async (req, res) => {
+    const postRemoved = await Post.findByIdAndDelete(req.params.id);
+
+    if(!postRemoved) return res.sendStatus(404)
+
+    return res.sendStatus(204)
+};
+
+export const getPost = async (req, res) => {
+    const post = await Post.findById(req.params.id);
+
+    if(!post) return res.sendStatus(404);
+
+    return res.json(post);
+      
+};
