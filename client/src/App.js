@@ -1,11 +1,12 @@
-import { PostForm, NotFoundPage, HomePage } from "./pages";
+import { PostForm, NotFoundPage, HomePage, Register } from "./pages";
 import {Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-   <div className="bg-neutral-900 text-white">
+   <div>
     <Routes>
       <Route path = '/' element = {<HomePage />} />
+      <Route path="/register" element = {<Register />} />
       <Route path = '/new' element = {<PostForm />} />
       <Route path = '*' element = {<NotFoundPage />} />
     </Routes>

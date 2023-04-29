@@ -1,5 +1,6 @@
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import NavBar from "../components/NavBar";
 
 const HomePage = () => {
 
@@ -16,6 +17,7 @@ const HomePage = () => {
 
     return(
         <div>
+            <NavBar />
             <h2>Home page</h2>
         </div>
     )
