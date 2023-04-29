@@ -1,4 +1,5 @@
 import Post from "../models/Post.js";
+import User from "../models/User.js";
 import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra"
 
@@ -87,3 +88,18 @@ export const getPost = async (req, res) => {
     }
 
 };
+
+export const registerUser = async (req, res) => {
+    try {
+        const {first_name, last_name, age, city, email, password} = req.body;
+
+        const newUser = new User({first_name, last_name, age, city, email, password})
+    
+        console.log(newUser);
+        await newUser.save()
+        return res.json(newUser)
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
