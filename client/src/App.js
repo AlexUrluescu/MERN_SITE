@@ -1,4 +1,4 @@
-import { PostForm, NotFoundPage, HomePage, Register } from "./pages";
+import { Create, NotFoundPage, HomePage, Register } from "./pages";
 import {Routes, Route } from "react-router-dom";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <Routes>
       <Route path = '/' element = {<HomePage />} />
       <Route path="/register" element = {<Register />} />
-      <Route path = '/new' element = {<PostForm />} />
+      <Route path = '/create' element = {<Create />} />
       <Route path = '*' element = {<NotFoundPage />} />
     </Routes>
    </div>

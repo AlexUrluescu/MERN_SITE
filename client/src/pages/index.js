@@ -1,11 +1,11 @@
 import HomePage from "./HomePage";
-import PostForm from "./PostForm";
+import Create from "./Create";
 import NotFoundPage from "./NotFoundPage";
 import Register from "./Register";
 
 export {
     HomePage,
-    PostForm,
+    Create,
     NotFoundPage,
     Register
 }
