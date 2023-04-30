@@ -89,6 +89,18 @@ export const getPost = async (req, res) => {
 
 };
 
+// -----------------------------------------------------------------
+
+export const getUsers = async (req, res) => {
+    try {
+        const users = await User.find()
+        res.send(users)
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 export const registerUser = async (req, res) => {
     try {
         const {first_name, last_name, age, city, email, password} = req.body;

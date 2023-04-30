@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { getPosts, createPost, updatePost, deletePost, getPost, registerUser } from "../controllers/post.controllers.js";
+import { getPosts, createPost, updatePost, deletePost, getPost, registerUser, getUsers } from "../controllers/post.controllers.js";
 
 const router = Router()
 
@@ -13,6 +13,9 @@ router.delete('/posts/:id', deletePost)
 
 router.get('/posts/:id', getPost)
 
+// ----------------------------------------------------
+
+router.get("/register", getUsers)
 router.post('/register', registerUser)
 
 export default router
