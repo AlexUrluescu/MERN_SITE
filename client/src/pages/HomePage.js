@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 const HomePage = () => {
 
     const [ users, setUsers ] = useState([]);
-    const [ query, setQuery ] = useState()
+    const [ query, setQuery ] = useState("")
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,6 +38,13 @@ const HomePage = () => {
                     <p>{user.age}</p>
                 </div>
             ))}
+            {/* {users.map((user, index) => (
+                <div key={index}>
+                    <h2>{user.first_name}</h2>
+                    <p>{user.last_name}</p>
+                    <p>{user.age}</p>
+                </div>
+            ))} */}
         </div>
     )
 }
