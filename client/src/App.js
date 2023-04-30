@@ -1,4 +1,4 @@
-import { Create, NotFoundPage, HomePage, Register } from "./pages";
+import { Create, NotFoundPage, HomePage, Register, Login } from "./pages";
 import {Routes, Route } from "react-router-dom";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
       <Route path = '/' element = {<HomePage />} />
       <Route path="/register" element = {<Register />} />
       <Route path = '/create' element = {<Create />} />
+      <Route path='/login' element = {<Login/>}/>
       <Route path = '*' element = {<NotFoundPage />} />
     </Routes>
    </div>
