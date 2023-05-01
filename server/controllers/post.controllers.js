@@ -2,6 +2,7 @@ import Post from "../models/Post.js";
 import User from "../models/User.js";
 import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra"
+import bcrypt from "bcryptjs"
 
 export const getPosts = async (req, res) => {
     try {    
@@ -102,10 +103,18 @@ export const getUsers = async (req, res) => {
 }
 
 export const registerUser = async (req, res) => {
-    try {
-        const {first_name, last_name, age, city, email, password} = req.body;
+    const {first_name, last_name, age, city, email, password} = req.body;
 
-        const newUser = new User({first_name, last_name, age, city, email, password})
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
+    try {
+        const oldUser = User.findOne({email})
+
+        if(oldUser){
+            return res.json({error: "user already exist"});
+        }
+
+        const newUser = new User({first_name, last_name, age, city, email, password: encryptedPassword})
     
         console.log(newUser);
         await newUser.save()
