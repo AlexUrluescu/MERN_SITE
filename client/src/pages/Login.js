@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/Login.css";
 
@@ -18,6 +19,9 @@ const Login = () => {
 
                         <input className="login_button" type="submit" value="Login"/>
                     </form>
+                    <div>
+                        <h2>Don't have an account?<Link to="/register"> Register </Link></h2>
+                    </div>
                 </div>
             </div>
         </div>
