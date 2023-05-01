@@ -3,6 +3,9 @@ import User from "../models/User.js";
 import { uploadImage, deleteImage } from "../libs/cloudinary.js";
 import fs from "fs-extra"
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
+
+const JWT_SECRET = "hhiauisuqnqmbwqoiiqiz0zmslak-127817";
 
 export const getPosts = async (req, res) => {
     try {    
@@ -108,7 +111,8 @@ export const registerUser = async (req, res) => {
     const encryptedPassword = await bcrypt.hash(password, 10);
 
     try {
-        const oldUser = User.findOne({email})
+        const oldUser = await User.findOne({email})
+        console.log(oldUser);
 
         if(oldUser){
             return res.json({error: "user already exist"});
@@ -123,4 +127,50 @@ export const registerUser = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+export const loginUser = async (req, res) => {
+    const {email, password} = req.body;
+
+    const user = await User.findOne({email});
+
+    if(!user){
+        return res.json({error: "user not found"});
+    }
+
+    if(await bcrypt.compare(password, user.password)){
+        const token = jwt.sign({email: user.email}, JWT_SECRET);
+
+        if(res.status(201)){
+            return res.json({status: "ok", data: token});
+
+        } else{
+            return res.json({error: "error"});
+        }
+    }
+
+    res.json({error: "Password incorrect"})
+
+}
+
+export const userData = async (req, res) => {
+    const { token } = req.body;
+
+    try {
+        const user = jwt.verify(token, JWT_SECRET);
+        const user_email = user.email;
+
+        User.findOne({email: user_email})
+            .then((data) => {
+                res.send({status: "ok", data: data})
+            })
+            .catch((error) => {
+                res.send({status: "error", data: error})
+            })
+
+        
+    } catch (error) {
+        console.log(error);
+    }
+
 }
