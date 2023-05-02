@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import "../css/NavBar.css"
 
 const NavBar = () => {
+
+    const isLoggedIn = window.localStorage.getItem("loggedIn")
+
+    const handleClick = () => {
+        window.localStorage.clear();
+        window.location.href = "./login"
+    }
+
     return(
         <div className="navbar">
             <div className="title">
@@ -14,7 +22,7 @@ const NavBar = () => {
                 <Link className="link" to="/profile"> Profile </Link>
             </div>
             <div className="status_user">
-                <Link className="link_status" to="/login"> Login </Link>
+                {isLoggedIn ? <button onClick={handleClick}>Log out</button>: <Link className="link_status" to="/login"> Login </Link>}
             </div>
         </div>
     )

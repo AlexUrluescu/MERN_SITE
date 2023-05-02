@@ -42,7 +42,8 @@ const Login = () => {
         if(data.status === "ok"){
             console.log('Login succesful');
             window.localStorage.setItem("token", data.data);
-            window.location.href = "./UserData";
+            window.localStorage.setItem("loggedIn", true);
+            window.location.href = "./";
         }
 
     }

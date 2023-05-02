@@ -1,6 +1,8 @@
 
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import NavBar from "../components/NavBar";
+import UserContext from "../context/UserContext";
 
 const initialUser = {
     first_name: '',
@@ -13,7 +15,9 @@ const initialUser = {
 
 const UserData = () => {
 
-    const [ user, setUser ] = useState(initialUser)
+    const [ user, setUser ] = useState(initialUser);
+
+    const {userLogin, setUserLogin} = useContext(UserContext)
 
     useEffect(() => {
         const sendData = async () => {
@@ -32,7 +36,8 @@ const UserData = () => {
                 console.log(data.data);
 
                 let userData = data.data;
-                setUser(userData)
+                console.log(userData);
+                setUserLogin(userData);
                 
             } catch (error) {
                 console.log(error);
@@ -43,10 +48,13 @@ const UserData = () => {
 
     }, [])
 
+    console.log(userLogin);
+
     return(
         <div>
-            <h2>Name {user.first_name}</h2>
-            <h2>Email {user.email}</h2>
+            <NavBar />
+            <h2>Name {userLogin.first_name}</h2>
+            <h2>Email {userLogin.email}</h2>
         </div>
     )
 }

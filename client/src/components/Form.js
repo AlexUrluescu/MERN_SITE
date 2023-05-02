@@ -33,7 +33,7 @@ const Form = () => {
 
             e.target.reset();
             setFormData(user);
-            navigate("/");
+            navigate("/login");
             
         } catch (error) {
             console.log(error);
