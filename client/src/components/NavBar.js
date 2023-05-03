@@ -20,10 +20,11 @@ const NavBar = () => {
                 <Link className="link" to="/"> Home </Link>
                 <Link className="link" to="/create"> Create </Link>
                 <Link className="link" to="/profile"> Profile </Link>
+                {isLoggedIn ? <button className="logout" onClick={handleClick}>Log out</button>: <Link className="login" to="/login"> Login </Link>}
             </div>
-            <div className="status_user">
-                {isLoggedIn ? <button onClick={handleClick}>Log out</button>: <Link className="link_status" to="/login"> Login </Link>}
-            </div>
+            {/* <div className="status_user">
+                
+            </div> */}
         </div>
     )
 }

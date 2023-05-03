@@ -1,23 +1,26 @@
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import NavBar from "../components/NavBar";
 import UserContext from "../context/UserContext";
+import { Link } from "react-router-dom";
 
+import myImage from "../static/planeta.png"
+import "../css/HomePage.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 const HomePage = () => {
 
+    const targetRef = useRef(null);
     const [ users, setUsers ] = useState([]);
     const [ query, setQuery ] = useState("");
     const {userLogin, setUserLogin} = useContext(UserContext)
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const res = await fetch("http://localhost:4000/register");
-            const data = await res.json()
+    function handleIconClick() {
+        targetRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
 
-            console.log(data);
-            setUsers(data)
-        }
+    useEffect(() => {
 
         const sendData = async () => {
             try {
@@ -44,17 +47,38 @@ const HomePage = () => {
 
         sendData();
 
-        fetchData()
+        // fetchData()
     }, [])
 
 
     console.log(userLogin);
+    console.log(userLogin.length);
 
     return(
         <div>
             <NavBar />
-            <h2>Home page</h2>
-            <h2>{userLogin.first_name} {userLogin.last_name}</h2>
+            <div className="container_home">
+                <div className="container_welcome">
+                    {userLogin.length != 0 ? <h1 className="welcome_h">Hello <b className="welcome_b">{userLogin.first_name} {userLogin.last_name}</b></h1>:<h1></h1>}
+                    <h1>Welcome in WebSchool</h1>
+                    <p className="container_p">Here is the best place to self-learning</p>
+                    <p>WebSchool is the best web learning platform</p>
+                    {userLogin.length != 0 ? <h3></h3>: <Link className="login_link" to="/login"> Login </Link>}
+                </div>
+                <div className="container_image">
+                    <img src={myImage} />
+                </div>
+            </div>
+            <div className="container_arrow">
+                <a href="#target">
+                    <FontAwesomeIcon className="arrow_icon" icon={faArrowDown} size="2x" />
+                </a>
+            </div>
+
+            <div className="container_data" ref={targetRef} id="target" onClick={handleIconClick}>
+                <h2>Data</h2>
+            </div>
+            
             <input
                 onChange={(e) => setQuery(e.target.value)}
                 type="text" 

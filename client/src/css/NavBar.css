@@ -1,7 +1,8 @@
 
 .navbar{
-    background-color: #4ea5d9;
+    background-color: #112D32;
     color: white;
+    border-bottom: 1px solid white;
 
     display: flex;
     justify-content: center;
@@ -9,34 +10,52 @@
 
 .title{
     /* background-color: red; */
-    width: 20%;
-    padding: 10px;
+    width: 30%;
+    padding: 15px 10px;
 
     text-align: center;
 }
 
 .links{
-    /* background-color: antiquewhite; */
-    padding: 10px;
-    width: 60%;
-    text-align: center;
+    /* background-color: red; */
+    width: 70%;
+    padding: 15px 30px;
 
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+
 }
 
 .status_user{
     width: 20%;
     padding: 10px;
-    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .link{
-    margin: 0 10px;
+    text-decoration: none;
+    color: white;
 }
 
-.link_status{
-    background-color: #df2935;
-    padding: 5px 20px;
-    /* width: 80px; */
+.logout{
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.login{
+    background-color: white;
+    color: black;
+    padding: 3px 10px;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
 }
