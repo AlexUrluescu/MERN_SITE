@@ -21,25 +21,13 @@ export const getPosts = async (req, res) => {
 
 export const createPost = async (req, res) => {
     try {
-        const {title, description, user_name} = req.body;
-
-        let image
-
-        if(req.files) {
-            const result  = await uploadImage(req.files.tempFilePath);
-            await fs.remove(req.files.tempFilePath)
-            image = {
-                url: result.secure_url,
-                public_id: result.public_id
-            }
-            console.log(result);
-        }
+        const {subject, details, price, user_name} = req.body;
      
-        const newPost = new Post({title, description, user_name})
+        const newPost = new Post({subject, details, price, user_name})
     
         console.log(newPost);
         await newPost.save()
-        return res.json(newPost)
+        return res.json({status: "ok"});
 
     } catch (error) {
         return res.status(500).json({message: error.message})
