@@ -1,21 +1,21 @@
 
 
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import NavBar from "../components/NavBar";
 import UserContext from "../context/UserContext";
 
-const initialUser = {
-    first_name: '',
-    last_name: '',
-    age: '',
-    city: '',
-    email: '',
-    password: ''
-}
+// const initialUser = {
+//     first_name: '',
+//     last_name: '',
+//     age: '',
+//     city: '',
+//     email: '',
+//     password: ''
+// }
 
 const UserData = () => {
 
-    const [ user, setUser ] = useState(initialUser);
+    // const [ user, setUser ] = useState(initialUser);
 
     const {userLogin, setUserLogin} = useContext(UserContext)
 
@@ -46,7 +46,7 @@ const UserData = () => {
 
         sendData();
 
-    }, [])
+    }, [setUserLogin])
 
     console.log(userLogin);
 
