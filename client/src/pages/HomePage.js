@@ -12,6 +12,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 const HomePage = () => {
 
     const targetRef = useRef(null);
+    // eslint-disable-next-line
     const [ users, setUsers ] = useState([]);
     const [ query, setQuery ] = useState("");
     const {userLogin, setUserLogin} = useContext(UserContext)
@@ -57,17 +58,22 @@ const HomePage = () => {
             <head>
                 <title>Home</title>
             </head>
+            {/* // eslint-disable-next-line */}
             <NavBar />
+            {/* // eslint-disable-next-line */}
             <div className="container_home">
                 <div className="container_welcome">
-                    {userLogin.length !== 0 ? <h1 className="welcome_h">Hello <b className="welcome_b">{userLogin.first_name} {userLogin.last_name}</b></h1>:<h1></h1>}
+                {/* // eslint-disable-next-line */}
+                    {userLogin.length !== 0 ? <h1 className="welcome_h">Hello <b className="welcome_b">{userLogin.first_name} {userLogin.last_name}</b></h1>:<h1> </h1>}
                     <h1>Welcome in WebSchool</h1>
                     <p className="container_p">Here is the best place to self-learning</p>
                     <p>WebSchool is the best web learning platform</p>
-                    {userLogin.length !== 0 ? <h3></h3>: <Link className="login_link" to="/login"> Login </Link>}
+                    {/* // eslint-disable-next-line */}
+                    {userLogin.length !== 0 ? <h3> </h3>: <Link className="login_link" to="/login"> Login </Link>}
                 </div>
                 <div className="container_image">
-                    <img src={myImage} alt="image"/>
+                {/* // eslint-disable-next-line */}
+                    <img src={myImage} alt=""/>
                 </div>
             </div>
             <div className="container_arrow">
