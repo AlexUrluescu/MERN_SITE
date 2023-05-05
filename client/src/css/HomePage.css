@@ -73,9 +73,91 @@
     border-radius: 50%;
     border: 4px solid #254E58;
     cursor: pointer;
+    color: black;
 }
 
 .container_data{
-    margin-top: 200px;
-    background-color: red;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    background-color: #112D32;
+
+    text-align: center;
+    color: white;
+}
+
+.container_data h2{
+    font-size: 40px;
+}
+
+.input_container{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.input_container input{
+    border: none;
+    height: 40px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 0px 10px;
+    outline: none;
+}
+
+.posts_container{
+    background-color: #112D32;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.post_container{
+    background-color: white;
+    width: 600px;
+    padding: 10px;
+    color: black;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post_subject{
+    /* background-color: aqua; */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post_details{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post_price{
+    /* background-color: blueviolet; */
+    margin-top: 30px;
+    padding: 20px 0 0 0;
+    border-top: 2px solid gray;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buy_button{
+    padding: 5px 0px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    background-color: gold;
+}
+
+.user_icon{
+    margin-right: 10px;
 }

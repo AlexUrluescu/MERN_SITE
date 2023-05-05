@@ -1,13 +1,17 @@
 
 import { useState, useEffect, useContext, useRef } from "react";
 import NavBar from "../components/NavBar";
+import Post from "../components/Post";
+
 import UserContext from "../context/UserContext";
 import { Link } from "react-router-dom";
 
 import myImage from "../static/planeta.png"
 import "../css/HomePage.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+
 
 const HomePage = () => {
 
@@ -87,30 +91,28 @@ const HomePage = () => {
                 </div>
             </div>
             <div className="container_arrow">
-                <a href="#target">
+                <a href="#target" onClick={handleIconClick}>
                     <FontAwesomeIcon className="arrow_icon" icon={faArrowDown} size="2x" />
                 </a>
             </div>
 
             <div className="container_data" ref={targetRef} id="target" onClick={handleIconClick}>
                 <h2>Posts</h2>
-            </div>
-            
-            <input
-                onChange={(e) => setQuery(e.target.value)}
-                type="text" 
-                name="search" 
-                placeholder="Search user"
-            />
-
-            {posts.filter((post) => post.subject.includes(query)).map((post, index) => (
-                <div key={index}>
-                    <h2>{post.subject}</h2>
-                    <p>{post.details}</p>
-                    <p>{post.price}</p>
+                <div className="input_container">
+                    <input
+                        onChange={(e) => setQuery(e.target.value)}
+                        type="text" 
+                        name="search" 
+                        placeholder="Search user"
+                    />
                 </div>
-            ))}
-        </div>
+                <div className="posts_container">
+                    {posts.filter((post) => post.subject.includes(query)).map((post, index) => (
+                        <Post index={index} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
+                    ))}
+                </div>
+            </div>  
+        </div> 
     )
 }
 
