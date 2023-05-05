@@ -13,7 +13,7 @@ const HomePage = () => {
 
     const targetRef = useRef(null);
     // eslint-disable-next-line
-    const [ users, setUsers ] = useState([]);
+    const [ posts, setPosts ] = useState([]);
     const [ query, setQuery ] = useState("");
     const {userLogin, setUserLogin} = useContext(UserContext)
 
@@ -46,7 +46,17 @@ const HomePage = () => {
             }
         }
 
+        const fetchPosts = async () => {
+            const res = await fetch("http://localhost:4000/posts");
+            const data = await res.json();
+
+            console.log(data);
+
+            setPosts(data);
+        }
+
         sendData();
+        fetchPosts();
     }, [setUserLogin])
 
 
@@ -55,9 +65,9 @@ const HomePage = () => {
 
     return(
         <div>
-            <head>
+            {/* <head>
                 <title>Home</title>
-            </head>
+            </head> */}
             {/* // eslint-disable-next-line */}
             <NavBar />
             {/* // eslint-disable-next-line */}
@@ -83,7 +93,7 @@ const HomePage = () => {
             </div>
 
             <div className="container_data" ref={targetRef} id="target" onClick={handleIconClick}>
-                <h2>Data</h2>
+                <h2>Posts</h2>
             </div>
             
             <input
@@ -93,11 +103,11 @@ const HomePage = () => {
                 placeholder="Search user"
             />
 
-            {users.filter((user) => user.first_name.includes(query)).map((user, index) => (
+            {posts.filter((post) => post.subject.includes(query)).map((post, index) => (
                 <div key={index}>
-                    <h2>{user.first_name}</h2>
-                    <p>{user.last_name}</p>
-                    <p>{user.age}</p>
+                    <h2>{post.subject}</h2>
+                    <p>{post.details}</p>
+                    <p>{post.price}</p>
                 </div>
             ))}
         </div>
