@@ -78,6 +78,10 @@ const Create = () => {
             setPost(initialPost)
         }
 
+        else if(data.status === "error"){
+            alert("Nu esti logat")
+        }
+
     }
 
     return(
