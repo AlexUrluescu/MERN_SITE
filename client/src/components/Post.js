@@ -4,14 +4,14 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
-const Post = ({index, subject, details, price, user_name}) => {
+const Post = ({subject, details, price, user_name}) => {
 
     const handleClick = () => {
         alert("Product added")
     }
 
     return(
-        <div className="post_container" key={index}>
+        <div className="post_container">
             <div className="post_subject">
                 <h3>{subject}</h3>
                 <span>

@@ -108,7 +108,7 @@ const HomePage = () => {
                 </div>
                 <div className="posts_container">
                     {posts.filter((post) => post.subject.includes(query)).map((post, index) => (
-                        <Post index={index} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
+                        <Post key={index} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
                     ))}
                 </div>
             </div>  
