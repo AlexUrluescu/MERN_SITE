@@ -22,7 +22,7 @@ const UserData = () => {
     useEffect(() => {
         const sendData = async () => {
             try {
-                const res = await fetch("http://localhost:4000/userData", {
+                const res = await fetch("https://school-t3hs.onrender.com/userData", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
