@@ -1,12 +1,7 @@
 import { Create, NotFoundPage, HomePage, Register, Login } from "./pages";
 import {Routes, Route } from "react-router-dom";
 import UserData from "./pages/UserData";
-import { UserProvider } from "./context/UserContext";
 import { useState } from "react";
-
-// const initialJWT = {
-
-// }
 
 
 function App() {
@@ -22,7 +17,6 @@ function App() {
 
   return (
    <div>
-    <UserProvider>
       <Routes>
         <Route path = '/' element = {<HomePage userLogin={userLogin} setUserLogin={setUserLogin} />} />
         <Route path="/register" element = {<Register />} />
@@ -31,7 +25,6 @@ function App() {
         <Route path='/userData' element = {<UserData/>} />
         <Route path = '*' element = {<NotFoundPage />} />
       </Routes>
-    </UserProvider>
    </div>
   );
 }  

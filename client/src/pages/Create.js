@@ -15,7 +15,6 @@ const initialPost = {
 const Create = ({userLogin, setUserLogin}) => {
 
     const [ post, setPost ] = useState(initialPost);
-    // const [ user, setUser ] = useState({});
 
     useEffect(() => {
         
