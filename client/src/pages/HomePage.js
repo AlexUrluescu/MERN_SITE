@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import NavBar from "../components/NavBar";
 import Post from "../components/Post";
+import Loader from "../components/Loader";
 
 // import UserContext from "../context/UserContext";
 import { Link } from "react-router-dom";
@@ -20,6 +21,7 @@ const HomePage = ({userLogin , setUserLogin}) => {
     // eslint-disable-next-line
     const [ posts, setPosts ] = useState([]);
     const [ query, setQuery ] = useState("");
+    const [loaderStatus, setLoaderStatus] = useState()
     // const {userLogin, setUserLogin} = useContext(UserContext)
 
     function handleIconClick() {
@@ -30,6 +32,7 @@ const HomePage = ({userLogin , setUserLogin}) => {
 
         const sendData = async () => {
                 try {
+
                     const res = await fetch("http://localhost:4000/userData", {
                         method: 'POST',
                         headers: {
@@ -39,6 +42,8 @@ const HomePage = ({userLogin , setUserLogin}) => {
                     });
     
                     const data = await res.json();
+
+                    // setLoaderStatus(false)
     
                     console.log(data);
                     console.log(data.data);
@@ -46,20 +51,30 @@ const HomePage = ({userLogin , setUserLogin}) => {
                     let userData = data.data;
                     setUserLogin(userData);
                     
+                    
                 } catch (error) {
                     console.log(error);
                 }
+
+            
             }        
         
 
         const fetchPosts = async () => {
-            const res = await fetch("http://localhost:4000/posts");
-            const data = await res.json();
 
-            console.log(data);
+            try {
+                setLoaderStatus(true);
+                const res = await fetch("http://localhost:4000/posts");
+                const data = await res.json();
+    
+                console.log(data);
+                setPosts(data);
+                setLoaderStatus(false);
 
-            setPosts(data);
-
+            } catch (error) {
+                console.log(error);
+            }
+           
         }
 
         
@@ -113,11 +128,13 @@ const HomePage = ({userLogin , setUserLogin}) => {
                         placeholder="Search user"
                     />
                 </div>
-                <div className="posts_container">
+
+                {loaderStatus ? <Loader /> : <div className="posts_container">
                     {posts.filter((post) => post.subject.includes(query)).map((post, index) => (
                         <Post key={index} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
                     ))}
-                </div>
+                </div>}
+                
             </div>  
         </div> 
     )
