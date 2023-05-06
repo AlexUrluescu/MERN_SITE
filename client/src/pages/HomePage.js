@@ -17,8 +17,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 const HomePage = ({userLogin , setUserLogin}) => {
 
     const targetRef = useRef(null);
-    const USER = window.localStorage.getItem("token");
-    // eslint-disable-next-line
+  
     const [ posts, setPosts ] = useState([]);
     const [ query, setQuery ] = useState("");
     const [loaderStatus, setLoaderStatus] = useState()
@@ -42,8 +41,6 @@ const HomePage = ({userLogin , setUserLogin}) => {
                     });
     
                     const data = await res.json();
-
-                    // setLoaderStatus(false)
     
                     console.log(data);
                     console.log(data.data);
@@ -55,7 +52,6 @@ const HomePage = ({userLogin , setUserLogin}) => {
                 } catch (error) {
                     console.log(error);
                 }
-
             
             }        
         
@@ -79,21 +75,21 @@ const HomePage = ({userLogin , setUserLogin}) => {
 
         
         fetchPosts();
-        sendData();
+        
+        // if(userLogin.length !== 0){
+        //     sendData();
+        // }
+        
+        sendData()
 
     }, [setUserLogin])
 
 
     console.log(userLogin);
     console.log(userLogin.length);
-    console.log(USER);
-
 
     return(
         <div>
-            {/* <head>
-                <title>Home</title>
-            </head> */}
             {/* // eslint-disable-next-line */}
             <NavBar setUserLogin={setUserLogin}/>
             {/* // eslint-disable-next-line */}
