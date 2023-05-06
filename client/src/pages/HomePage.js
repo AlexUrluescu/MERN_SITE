@@ -1,9 +1,9 @@
 
-import { useState, useEffect, useContext, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 
-import UserContext from "../context/UserContext";
+// import UserContext from "../context/UserContext";
 import { Link } from "react-router-dom";
 
 import myImage from "../static/planeta.png"
@@ -13,42 +13,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 
-const HomePage = () => {
+const HomePage = ({userLogin , setUserLogin}) => {
 
     const targetRef = useRef(null);
+    const USER = window.localStorage.getItem("token");
     // eslint-disable-next-line
     const [ posts, setPosts ] = useState([]);
     const [ query, setQuery ] = useState("");
-    const {userLogin, setUserLogin} = useContext(UserContext)
+    // const {userLogin, setUserLogin} = useContext(UserContext)
 
     function handleIconClick() {
         targetRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // eslint-disable-next-line
     useEffect(() => {
 
-        const sendData = async () => {
-            try {
-                const res = await fetch("http://localhost:4000/userData", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({token: window.localStorage.getItem("token")})
-                });
-
-                const data = await res.json();
-
-                console.log(data);
-                console.log(data.data);
-
-                let userData = data.data;
-                setUserLogin(userData);
-                
-            } catch (error) {
-                console.log(error);
+        if(userLogin.length !== 0){
+            const sendData = async () => {
+                try {
+                    const res = await fetch("http://localhost:4000/userData", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({token: window.localStorage.getItem("token")})
+                    });
+    
+                    const data = await res.json();
+    
+                    console.log(data);
+                    console.log(data.data);
+    
+                    let userData = data.data;
+                    setUserLogin(userData);
+                    
+                } catch (error) {
+                    console.log(error);
+                }
             }
+
+            sendData();
         }
+        
 
         const fetchPosts = async () => {
             const res = await fetch("http://localhost:4000/posts");
@@ -57,15 +64,18 @@ const HomePage = () => {
             console.log(data);
 
             setPosts(data);
+
         }
 
-        sendData();
+        
         fetchPosts();
-    }, [setUserLogin])
+    }, [setUserLogin, userLogin.length])
 
 
     console.log(userLogin);
     console.log(userLogin.length);
+    console.log(USER);
+
 
     return(
         <div>
@@ -73,7 +83,7 @@ const HomePage = () => {
                 <title>Home</title>
             </head> */}
             {/* // eslint-disable-next-line */}
-            <NavBar />
+            <NavBar setUserLogin={setUserLogin}/>
             {/* // eslint-disable-next-line */}
             <div className="container_home">
                 <div className="container_welcome">

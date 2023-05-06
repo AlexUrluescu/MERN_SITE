@@ -10,7 +10,7 @@ const initialUser = {
     password: ""
 }
 
-const Login = () => {
+const Login = ({setUserLogin}) => {
 
     const [user, setUser] = useState(initialUser);
     const error_alert = document.getElementById("error_alert");
@@ -53,6 +53,7 @@ const Login = () => {
         if(data.status === "ok"){
             console.log('Login succesful');
             window.localStorage.setItem("token", data.data);
+            setUserLogin(data.data)
             window.localStorage.setItem("loggedIn", true);
             window.location.href = "./";
         }
