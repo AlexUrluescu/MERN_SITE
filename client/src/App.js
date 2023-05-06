@@ -1,4 +1,4 @@
-import { Create, NotFoundPage, HomePage, Register, Login} from "./pages";
+import { Create, NotFoundPage, HomePage, Register, Login } from "./pages";
 import {Routes, Route } from "react-router-dom";
 import UserData from "./pages/UserData";
 import { UserProvider } from "./context/UserContext";
