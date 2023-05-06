@@ -8,7 +8,7 @@ const NavBar = () => {
 
     const handleClick = () => {
         window.localStorage.clear();
-        window.location.href = "./login"
+        // window.location.href = "./login"
     }
 
     return(
