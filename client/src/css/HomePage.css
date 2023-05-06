@@ -41,6 +41,10 @@
     color: black;
     background-color: gold;
     padding: 5px 15px;
+    border-radius: 10px;
+    font-weight: 500;
+    width: 100px;
+    text-align: center;
 }
 
 

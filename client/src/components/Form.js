@@ -52,7 +52,7 @@ const Form = () => {
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className="form_register" onSubmit={handleSubmit}>
                 <input onChange={handleChange} value={formData.first_name} type="text" name="first_name" placeholder="First Name"/>
                 <input onChange={handleChange} value={formData.last_name} type="text" name="last_name" placeholder="Last Name"/>
                 <input onChange={handleChange} value={formData.age} type="text" name="age" placeholder="Age"/>
@@ -60,7 +60,8 @@ const Form = () => {
                 <input onChange={handleChange} value={formData.email} type="email" name="email" placeholder="Email"/>
                 <input onChange={handleChange} value={formData.password} type="password" name="password" placeholder="Password" />
 
-                <input type="submit" value="Register"/>
+                {/* <input className="btn_register" type="submit" value="Register"/> */}
+                <button className="btn_register" type="submit">Register</button>
             </form>
         </div>
     )
