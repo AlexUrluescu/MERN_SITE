@@ -26,11 +26,9 @@ const HomePage = ({userLogin , setUserLogin}) => {
         targetRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // eslint-disable-next-line
     useEffect(() => {
 
-        if(userLogin.length !== 0){
-            const sendData = async () => {
+        const sendData = async () => {
                 try {
                     const res = await fetch("http://localhost:4000/userData", {
                         method: 'POST',
@@ -51,10 +49,7 @@ const HomePage = ({userLogin , setUserLogin}) => {
                 } catch (error) {
                     console.log(error);
                 }
-            }
-
-            sendData();
-        }
+            }        
         
 
         const fetchPosts = async () => {
@@ -69,7 +64,9 @@ const HomePage = ({userLogin , setUserLogin}) => {
 
         
         fetchPosts();
-    }, [setUserLogin, userLogin.length])
+        sendData();
+
+    }, [setUserLogin])
 
 
     console.log(userLogin);
