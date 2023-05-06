@@ -66,8 +66,8 @@ const Login = ({setUserLogin}) => {
             <div className="container-fr">
                 <div className="login_container">
                     <div className="form_text">
-                        <h1><b>Welcome in Web School</b></h1>
-                        <h2>Login with your email and password</h2>
+                        <h1><b>Welcome in WebSchool</b></h1>
+                        <h3>Login with your email and password</h3>
                     </div>
                     <form onSubmit={handleSubmit} className="login_form">
                         <h4 className="error_h" id="error_alert"> </h4>
@@ -87,8 +87,8 @@ const Login = ({setUserLogin}) => {
 
                         <input className="login_button" type="submit" value="Login"/>
                     </form>
-                    <div>
-                        <h2>Don't have an account?<Link to="/register"> Register </Link></h2>
+                    <div className="register_cont">
+                        <h2>Don't have an account?<Link className="link_register" to="/register"> Register </Link></h2>
                     </div>
                 </div>
             </div>
