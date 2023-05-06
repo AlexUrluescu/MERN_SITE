@@ -12,7 +12,7 @@ const initialPost = {
     user_name: ''
 }
 
-const Create = ({userLogin, handleUser}) => {
+const Create = ({userLogin, setUserLogin}) => {
 
     const [ post, setPost ] = useState(initialPost);
     // const [ user, setUser ] = useState({});
@@ -32,7 +32,7 @@ const Create = ({userLogin, handleUser}) => {
                 const data = await res.json();
     
                 let userData = data.data;
-                handleUser(userData);
+                setUserLogin(userData);
                 
                 
             } catch (error) {
@@ -42,7 +42,7 @@ const Create = ({userLogin, handleUser}) => {
     
         sendData();
     
-    }, [handleUser])
+    }, [setUserLogin])
 
     console.log(userLogin);
 
@@ -88,7 +88,7 @@ const Create = ({userLogin, handleUser}) => {
 
     return(
         <div>
-            <NavBar handleUser={handleUser}/>
+            <NavBar setUserLogin={setUserLogin}/>
             <div className="create_container">
                 <div className="create_box">
                     <div>

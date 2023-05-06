@@ -62,7 +62,7 @@ const Login = ({setUserLogin}) => {
 
     return(
         <div>
-            <NavBar />
+            <NavBar setUserLogin={setUserLogin}/>
             <div className="container-fr">
                 <div className="login_container">
                     <div className="form_text">

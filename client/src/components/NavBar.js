@@ -2,13 +2,15 @@
 import { Link } from "react-router-dom";
 import "../css/NavBar.css"
 
-const NavBar = ({handleUser}) => {
+
+const NavBar = ({setUserLogin}) => {
 
     const isLoggedIn = window.localStorage.getItem("loggedIn")
 
     const handleClick = () => {
         window.localStorage.clear();
-        handleUser([]);
+        setUserLogin([]);
+        // navigate("/login")
         // window.location.href = "./login"
     }
 

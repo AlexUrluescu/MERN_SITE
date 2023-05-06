@@ -15,13 +15,10 @@ function App() {
 
   const [ userLogin, setUserLogin ] = useState([])
 
-  const handleUser = (data) => {
-    setUserLogin(data)
-  }
-
-  // const hello = () => {
-  //   alert("hello")
+  // const handleUser = (data) => {
+  //   setUserLogin(data)
   // }
+
 
   return (
    <div>
@@ -29,7 +26,7 @@ function App() {
       <Routes>
         <Route path = '/' element = {<HomePage userLogin={userLogin} setUserLogin={setUserLogin} />} />
         <Route path="/register" element = {<Register />} />
-        <Route path = '/create' element = {<Create userLogin={userLogin} handleUser={handleUser}/>} />
+        <Route path = '/create' element = {<Create userLogin={userLogin} setUserLogin={setUserLogin}/>} />
         <Route path='/login' element = {<Login setUserLogin={setUserLogin}/>}/>
         <Route path='/userData' element = {<UserData/>} />
         <Route path = '*' element = {<NotFoundPage />} />

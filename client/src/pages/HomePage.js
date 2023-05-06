@@ -76,11 +76,7 @@ const HomePage = ({userLogin , setUserLogin}) => {
         
         fetchPosts();
         
-        // if(userLogin.length !== 0){
-        //     sendData();
-        // }
-        
-        sendData()
+        sendData();
 
     }, [setUserLogin])
 
