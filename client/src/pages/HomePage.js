@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Post from "../components/Post";
 import Loader from "../components/Loader";
@@ -10,22 +10,12 @@ import { Link } from "react-router-dom";
 import myImage from "../static/planeta.png"
 import "../css/HomePage.css";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
-
 
 const HomePage = ({userLogin , setUserLogin}) => {
-
-    const targetRef = useRef(null);
   
     const [ posts, setPosts ] = useState([]);
     const [ query, setQuery ] = useState("");
     const [loaderStatus, setLoaderStatus] = useState()
-    // const {userLogin, setUserLogin} = useContext(UserContext)
-
-    function handleIconClick() {
-        targetRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
 
     useEffect(() => {
 
@@ -104,13 +94,8 @@ const HomePage = ({userLogin , setUserLogin}) => {
                     <img src={myImage} alt=""/>
                 </div>
             </div>
-            <div className="container_arrow">
-                <a href="#target" onClick={handleIconClick}>
-                    <FontAwesomeIcon className="arrow_icon" icon={faArrowDown} size="2x" />
-                </a>
-            </div>
 
-            <div className="container_data" ref={targetRef} id="target" onClick={handleIconClick}>
+            <div className="container_data">
                 <h2>Posts</h2>
                 <div className="input_container">
                     <input

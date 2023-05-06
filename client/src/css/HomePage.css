@@ -81,8 +81,9 @@
 }
 
 .container_data{
-    margin-top: 60px;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    padding-bottom: 50px;
+    /* margin-bottom: 50px; */
     background-color: #112D32;
 
     text-align: center;
