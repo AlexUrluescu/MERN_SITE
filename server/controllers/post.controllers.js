@@ -65,7 +65,7 @@ export const deletePost = async (req, res) => {
             await deleteImage(postRemoved.public_id)
         }
     
-        return res.sendStatus(204)
+        return res.status(200).json({message: "Deleted"})
 
     } catch (error) {
         return res.status(500).json({message: error.message})
