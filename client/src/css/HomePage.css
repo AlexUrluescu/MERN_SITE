@@ -1,7 +1,7 @@
 
 
 .container_home{
-    background-color: #254E58;
+    background-color: aliceblue;
 
     display: flex;
     
@@ -10,7 +10,7 @@
 .container_welcome{
     /* background-color: antiquewhite; */
     width: 50%;
-    color: white;
+    /* color: white; */
     padding: 30px 10px;
     height: 70vh;
 

@@ -17,7 +17,7 @@ const NavBar = ({setUserLogin}) => {
     return(
         <div className="navbar">
             <div className="title">
-                <h2>Web School</h2>
+                <h2>Forms Web</h2>
             </div>
             <div className="links">
                 <Link className="link" to="/"> Home </Link>
