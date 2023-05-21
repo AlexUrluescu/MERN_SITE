@@ -9,7 +9,8 @@ const initialPost = {
     subject: '',
     details: '',
     price: '',
-    user_name: ''
+    user_name: '',
+    id_user: ''
 }
 
 const Create = ({userLogin, setUserLogin}) => {
@@ -46,6 +47,7 @@ const Create = ({userLogin, setUserLogin}) => {
     console.log(userLogin);
 
     initialPost.user_name = userLogin.last_name + ' ' + userLogin.first_name;
+    initialPost.id_user = userLogin._id;
     console.log(initialPost);
 
 

@@ -4,6 +4,7 @@ import NotFoundPage from "./NotFoundPage";
 import Register from "./Register";
 import Login from "./Login";
 import FirstForm from "./FirstForm";
+import MyPosts from "./MyPosts";
 
 
 export {
@@ -12,5 +13,6 @@ export {
     NotFoundPage,
     Register,
     Login,
-    FirstForm
+    FirstForm,
+    MyPosts
 }

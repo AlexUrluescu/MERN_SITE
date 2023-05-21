@@ -22,13 +22,13 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
 
     try {
-        const {subject, details, price, user_name} = req.body;
+        const {subject, details, price, user_name, id_user} = req.body;
         
         if(user_name === 'undefined undefined'){
             return res.json({status: "error"})
         }
      
-        const newPost = new Post({subject, details, price, user_name})
+        const newPost = new Post({subject, details, price, user_name, id_user})
     
         console.log(newPost);
         await newPost.save()

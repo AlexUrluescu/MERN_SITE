@@ -20,6 +20,11 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    id_user:{
+        type: String,
+        required: true,
+        trim: true
     }
 })
 
