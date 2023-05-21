@@ -191,3 +191,27 @@ export const postForm1 = async (req, res) => {
     }
 
 }
+
+// export const getPosts = async (req, res) => {
+//     try {    
+//         const posts = await Post.find()
+//         res.send(posts)
+        
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({message: error.message})
+//     }
+
+// };
+
+export const myPosts = async (req, res) => {
+    const id_user = req.params.id;
+
+    try {
+        const posts = await Post.find({id_user})
+        res.send(posts)
+
+    } catch (error) {
+        console.log(error);
+    }
+}

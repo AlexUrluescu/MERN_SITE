@@ -1,5 +1,6 @@
 import { Router } from "express"
-import { getPosts, createPost, updatePost, deletePost, getPost, registerUser, getUsers, loginUser, userData } from "../controllers/post.controllers.js";
+import { getPosts, createPost, updatePost, deletePost, getPost, registerUser, getUsers, loginUser, userData, myPosts } from "../controllers/post.controllers.js";
+
 
 const router = Router()
 
@@ -23,5 +24,7 @@ router.post("/userData", userData)
 
 // ---------------------------------------------------
 router.post("/form1", )
+
+router.get("/myPosts/:id", myPosts)
 
 export default router
