@@ -20,7 +20,7 @@ const Create = ({userLogin, setUserLogin}) => {
         
         const sendData = async () => {
             try {
-                const res = await fetch("https://school-t3hs.onrender.com/userData", {
+                const res = await fetch("http://localhost:4000/userData", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ const Create = ({userLogin, setUserLogin}) => {
 
         console.log(post);
 
-        const res = await fetch("https://school-t3hs.onrender.com/posts", {
+        const res = await fetch("http://localhost:4000/posts", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
