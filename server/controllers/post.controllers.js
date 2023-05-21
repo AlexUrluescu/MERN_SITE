@@ -47,6 +47,8 @@ export const updatePost = async (req, res) => {
         console.log(updatedPost);
         return res.json(updatedPost);
 
+        // return res.status(200);
+
     } catch (error) {
         return res.status(500).json({message: error.message})
         

@@ -1,0 +1,33 @@
+
+.container_all{
+
+    background-color: #112D32;
+
+    display: flex;
+    gap: 10px;
+
+}
+
+.container_posts{
+    background-color: red;
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formular{
+    color: white;
+    background-color: greenyellow;
+    display: flex;
+    flex-direction: column;
+}
+
+.formular input{
+    margin-bottom: 20px;
+}
+
+.link_edit{
+    cursor: pointer;
+}
