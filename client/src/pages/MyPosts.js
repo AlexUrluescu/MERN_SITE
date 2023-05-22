@@ -100,7 +100,7 @@ const MyPosts = ({userLogin, setUserLogin}) => {
                 
 
                 <div className="container_all">
-                    {userLogin.length === 0 ? <div><h2>NU ESTI LOGAT</h2></div> : <h2> </h2>}
+                    {userLogin.length === 0 ? <div id="alert_title"><h2>NU ESTI LOGAT</h2></div> : <h2> </h2>}
                     <div className="container_posts">
                         {myPosts.map((post, index) => (
                         <PostEdit key={index} setPostEdit = {setPostEdit} setFormData = {setFormData} id = {post._id} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
