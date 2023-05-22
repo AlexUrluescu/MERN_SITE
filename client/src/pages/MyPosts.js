@@ -98,15 +98,15 @@ const MyPosts = ({userLogin, setUserLogin}) => {
         <div>
             <NavBar setUserLogin={setUserLogin}/>
                 
-                <h3>My Posts</h3>
 
                 <div className="container_all">
+                    {userLogin.length === 0 ? <div><h2>NU ESTI LOGAT</h2></div> : <h2></h2>}
                     <div className="container_posts">
                         {myPosts.map((post, index) => (
                         <PostEdit key={index} setPostEdit = {setPostEdit} setFormData = {setFormData} id = {post._id} subject={post.subject} details={post.details} price={post.price} user_name={post.user_name}/>
                         ))}
                     </div>
-                    <div>
+                    <div className="myPosts_form">
                         <form onSubmit={handleClick} className="formular">
                             <label>Subject</label>
                             <input onChange={handleChange} value={formData.subject} name="subject" type="text" placeholder="Subject"/>
@@ -115,7 +115,7 @@ const MyPosts = ({userLogin, setUserLogin}) => {
                             <label>Price</label>
                             <input onChange={handleChange} value={formData.price} name="price"  type="text" placeholder="Price"/>
 
-                            <input className="link_edit" type="submit" value="Send"/>
+                            <input id="link_edit" type="submit" value="Send"/>
                             {/* <input onClick={handleTest} type="button" value="test"/> */}
                         </form>
                     </div>
