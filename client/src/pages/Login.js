@@ -29,7 +29,7 @@ const Login = ({setUserLogin}) => {
 
         console.log(user);
 
-        const res = await fetch("http://localhost:4000/login", {
+        const res = await fetch("https://mernstite.onrender.com/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

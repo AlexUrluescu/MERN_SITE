@@ -8,7 +8,7 @@ const PostEdit = ({setPostEdit, setFormData, id, subject, details, price, user_n
     const handleEdit = async () => {
         try {
 
-            const res = await fetch(`http://localhost:4000/posts/${id}`);
+            const res = await fetch(`https://mernstite.onrender.com/posts/${id}`);
             const data = await res.json()
 
             console.log(data);
@@ -25,7 +25,7 @@ const PostEdit = ({setPostEdit, setFormData, id, subject, details, price, user_n
         // console.log("delete");
         try {
 
-            const data = await fetch(`http://localhost:4000/posts/${id}`, {
+            const data = await fetch(`https://mernstite.onrender.com/posts/${id}`, {
                 method:'DELETE'
             })
 

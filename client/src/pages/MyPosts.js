@@ -26,7 +26,7 @@ const MyPosts = ({userLogin, setUserLogin}) => {
         
         const sendData = async () => {
             try {
-                const res = await fetch("http://localhost:4000/userData", {
+                const res = await fetch("https://mernstite.onrender.com/userData", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ const MyPosts = ({userLogin, setUserLogin}) => {
                 let userData = data.data;
                 setUserLogin(userData);
 
-                    const res2 = await fetch(`http://localhost:4000/myPosts/${userLogin._id}`)
+                    const res2 = await fetch(`https://mernstite.onrender.com/myPosts/${userLogin._id}`)
                     const data2 = await res2.json();
 
                     console.log(data2);
@@ -76,7 +76,7 @@ const MyPosts = ({userLogin, setUserLogin}) => {
         const price = formData.price;
 
 
-        const data = await fetch(`http://localhost:4000/posts/${postEdit}`, {
+        const data = await fetch(`https://mernstite.onrender.com/posts/${postEdit}`, {
             method:'PUT',
             headers: {
                 'Content-Type': 'application/json'
