@@ -94,9 +94,6 @@ const HomePage = ({userLogin , setUserLogin}) => {
                     <img src={myImage} alt=""/>
                 </div>
             </div>
-            <div>
-                <Link to="/firstForm">First Form</Link>
-            </div>
 
             <div className="container_data">
                 <h2>Posts</h2>
