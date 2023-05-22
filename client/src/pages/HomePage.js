@@ -50,7 +50,7 @@ const HomePage = ({userLogin , setUserLogin}) => {
 
             try {
                 setLoaderStatus(true);
-                const res = await fetch("http://localhost:4000/posts");
+                const res = await fetch("https://mernstite.onrender.com/posts");
                 const data = await res.json();
     
                 console.log(data);
