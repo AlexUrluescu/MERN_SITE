@@ -2,6 +2,7 @@
 import NavBar from "../components/NavBar";
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../css/Create.css";
 
@@ -16,6 +17,8 @@ const initialPost = {
 const Create = ({userLogin, setUserLogin}) => {
 
     const [ post, setPost ] = useState(initialPost);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         
@@ -79,6 +82,8 @@ const Create = ({userLogin, setUserLogin}) => {
         if(data.status === "ok"){
             console.log('Post created succesfully');
             setPost(initialPost)
+            navigate("/")
+
         }
 
         else if(data.status === "error"){
